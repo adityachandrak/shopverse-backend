@@ -15,6 +15,18 @@ app.get("/", (req, res) => {
   res.send("ShopVerse backend running");
 });
 
+app.get("/api", (req, res) => {
+  res.json({
+    success: true,
+    message: "ShopVerse API running",
+    endpoints: {
+      signup: "POST /api/signup",
+      signin: "POST /api/signin",
+      checkout: "POST /api/checkout",
+    },
+  });
+});
+
 app.post("/api/signup", async (req, res) => {
   const { name, fullName, email, password } = req.body;
   const customerName = name || fullName;
